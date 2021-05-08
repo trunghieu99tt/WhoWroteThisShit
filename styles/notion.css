@@ -18,7 +18,7 @@
 }
 
 .index-page {
-  --notion-max-width: 900px;
+  --notion-max-width: 1170px;
 }
 
 .notion-text {
@@ -50,7 +50,9 @@
 }
 
 .notion-gallery-grid .notion-page-title-text {
-  font-size: 2em;
+  font-size: 1.5rem;
+  line-height: 1.5;
+  font-weight: 700;
   white-space: unset;
 }
 
@@ -66,30 +68,33 @@
 .notion-collection-card {
   border-radius: 16px;
   box-shadow: none;
+  padding: 15px;
+}
+
+.notion-collection-card {
+  overflow: visible;
+  transition: all 0.2s;
+}
+
+.notion-collection-card-cover {
+  border-radius: 16px;
+  overflow: visible;
+  height: 300px;
+  box-shadow: 2px 2px 8px 4px rgba(15, 15, 15, 0.1);
+  border-bottom: 0 none;
+  transition: filter 150ms linear;
+  filter: none;
 }
 
 .notion-collection-card-cover img {
   border-radius: 16px;
 }
 
-.notion-collection-card {
-  overflow: visible;
-}
-
-.notion-collection-card-cover {
-  border-radius: 16px;
-  overflow: visible;
-  box-shadow: 2px 2px 8px 4px rgba(15, 15, 15, 0.1);
-}
-
-.notion-collection-card-cover {
-  border-bottom: 0 none;
-  transition: filter 150ms linear;
-  filter: none;
-}
-
-.notion-collection-card:hover .notion-collection-card-cover {
-  filter: brightness(120%);
+.notion-collection-card:hover {
+  background: none;
+  -webkit-box-shadow: -1px 1px 18px 5px rgba(209, 209, 209, 1);
+  -moz-box-shadow: -1px 1px 18px 5px rgba(209, 209, 209, 1);
+  box-shadow: -1px 1px 18px 5px rgba(209, 209, 209, 1);
 }
 
 /* only target safari */
@@ -176,6 +181,8 @@
   max-width: 1200px;
   border-radius: 24px;
   box-shadow: 2px 2px 8px 4px rgba(15, 15, 15, 0.1);
+  max-height: 40vh;
+  height: 40vh;
 }
 
 @media only screen and (max-width: 1200px) {
@@ -315,6 +322,7 @@
 .notion-page-icon-wrapper img.notion-page-icon {
   border-radius: 50%;
   box-shadow: 0 8px 40px 0 rgb(0 0 0 / 21%);
+  object-fit: cover;
 }
 
 .notion-header {
