@@ -1,6 +1,6 @@
 import React from 'react';
 
-import styles from './styles.module.css';
+import styles from './comment.module.css';
 
 export type MappingType =
     | 'pathname'
@@ -32,7 +32,7 @@ interface ReactUtterancesState {
     pending: boolean;
 }
 
-export class ReactUtterances extends React.Component<
+export default class ReactUtterances extends React.Component<
     ReactUtterancesProps,
     ReactUtterancesState
 > {

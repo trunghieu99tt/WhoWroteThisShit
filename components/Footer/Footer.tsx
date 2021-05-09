@@ -4,15 +4,15 @@ import * as React from 'react';
 import * as config from 'lib/config';
 
 // components
-import SocialLinks from './SocialLinks';
+import SocialLinks from 'components/SocialLinks';
 
 // icons
 import { IoSunnyOutline, IoMoonSharp } from 'react-icons/io5';
 
 // styles
-import styles from './styles.module.css';
+import styles from './footer.module.css';
 
-export const Footer: React.FC<{
+const Footer: React.FC<{
     isDarkMode: boolean;
     toggleDarkMode: () => void;
 }> = ({ isDarkMode, toggleDarkMode }) => {
@@ -53,3 +53,5 @@ export const Footer: React.FC<{
         </footer>
     );
 };
+
+export default Footer;

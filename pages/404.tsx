@@ -1,3 +1,3 @@
-import { Page404 } from 'components';
+import ErrorPage from 'components/ErrorPage';
 
-export default Page404;
+export default ErrorPage;

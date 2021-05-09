@@ -1,8 +1,8 @@
 import React from 'react';
 
-import styles from './styles.module.css';
+import styles from './githubSharedButton.module.css';
 
-export const GitHubShareButton: React.FC = () => {
+const GitHubShareButton: React.FC = () => {
     return (
         <a
             href='https://github.com/trunghieu99tt'
@@ -46,3 +46,5 @@ export const GitHubShareButton: React.FC = () => {
         </a>
     );
 };
+
+export default GitHubShareButton;

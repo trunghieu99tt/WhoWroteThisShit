@@ -2,9 +2,7 @@ import React from 'react';
 
 import classes from './loading.module.css';
 
-interface Props {}
-
-const Loading = (props: Props) => {
+const Loading = () => {
     return (
         <div className={classes.container}>
             <div className={classes.loader}>

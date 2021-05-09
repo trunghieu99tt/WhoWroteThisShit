@@ -3,8 +3,6 @@ import * as React from 'react';
 import * as types from '../lib/types';
 
 export const CustomFont: React.FC<{ site: types.Site }> = ({ site }) => {
-    console.log(`site.fontFamily`, site.fontFamily);
-
     if (!site.fontFamily) {
         return null;
     }

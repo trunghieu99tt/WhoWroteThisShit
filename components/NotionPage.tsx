@@ -1,5 +1,4 @@
 import * as React from 'react';
-import Head from 'next/head';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import cs from 'classnames';
@@ -29,13 +28,12 @@ import * as config from 'lib/config';
 // components
 import { CustomFont } from './CustomFont';
 import Loading from './Loading';
-import { Page404 } from './Page404';
 import PageHead from './PageHead';
-import { Footer } from './Footer';
-import { ReactUtterances } from './ReactUtterances';
-
-import styles from './styles.module.css';
+import Footer from './Footer';
 import ShareButton from './ShareButton';
+import ErrorPage from 'pages/404';
+import Comment from './Comment';
+import BlogHeader from './BlogHeader';
 
 // const Code = dynamic(() =>
 //   import('react-notion-x').then((notion) => notion.Code)
@@ -73,7 +71,8 @@ export const NotionPage: React.FC<types.PageProps> = ({
     site,
     recordMap,
     error,
-    pageId
+    pageId,
+    post
 }) => {
     const router = useRouter();
     const lite = useSearchParam('lite');
@@ -95,7 +94,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
     const block = recordMap?.block?.[keys[0]]?.value;
 
     if (error || !site || !keys.length || !block) {
-        return <Page404 site={site} pageId={pageId} error={error} />;
+        return <ErrorPage site={site} pageId={pageId} error={error} />;
     }
 
     const title = getBlockTitle(block, recordMap) || site.name;
@@ -142,7 +141,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
     if (isBlogPost) {
         if (config.utterancesGitHubRepo) {
             comments = (
-                <ReactUtterances
+                <Comment
                     repo={config.utterancesGitHubRepo}
                     issueMap='issue-term'
                     issueTerm='title'
@@ -167,10 +166,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
             {isLiteMode && <BodyClassName className='notion-lite' />}
 
             <NotionRenderer
-                bodyClassName={cs(
-                    styles.notion,
-                    pageId === site.rootNotionPageId && 'index-page'
-                )}
+                bodyClassName={pageId === site.rootNotionPageId && 'index-page'}
                 components={{
                     pageLink: ({
                         href,
@@ -203,6 +199,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
                     pdf: Pdf,
                     equation: Equation
                 }}
+                pageHeader={post && <BlogHeader post={post} />}
                 recordMap={recordMap}
                 rootPageId={site.rootNotionPageId}
                 fullPage={!isLiteMode}
@@ -216,7 +213,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
                 defaultPageCoverPosition={config.defaultPageCoverPosition}
                 mapPageUrl={siteMapPageUrl}
                 mapImageUrl={mapNotionImageUrl}
-                searchNotion={searchNotion}
+                // searchNotion={searchNotion}
                 pageFooter={comments}
                 pageAside={pageAside}
                 footer={

@@ -1,84 +1,105 @@
-import { ExtendedRecordMap, PageMap } from 'notion-types'
+import { ExtendedRecordMap, PageMap } from 'notion-types';
 
-export * from 'notion-types'
+export * from 'notion-types';
 
 export interface PageError {
-  message?: string
-  statusCode: number
+    message?: string;
+    statusCode: number;
 }
 
 export interface PageProps {
-  site?: Site
-  recordMap?: ExtendedRecordMap
-  pageId?: string
-  error?: PageError
+    site?: Site;
+    recordMap?: ExtendedRecordMap;
+    pageId?: string;
+    error?: PageError;
+    post?: iPost;
 }
 
 export interface Model {
-  id: string
-  userId: string
+    id: string;
+    userId: string;
 
-  createdAt: number
-  updatedAt: number
+    createdAt: number;
+    updatedAt: number;
 }
 
 export interface Site extends Model {
-  name: string
-  domain: string
+    name: string;
+    domain: string;
 
-  rootNotionPageId: string
-  rootNotionSpaceId: string
+    rootNotionPageId: string;
+    rootNotionSpaceId: string;
 
-  // settings
-  html?: string
-  fontFamily?: string
-  darkMode?: boolean
-  previewImages?: boolean
+    // settings
+    html?: string;
+    fontFamily?: string;
+    darkMode?: boolean;
+    previewImages?: boolean;
 
-  // opengraph metadata
-  description?: string
-  image?: string
+    // opengraph metadata
+    description?: string;
+    image?: string;
 
-  timestamp: Date
+    timestamp: Date;
 
-  isDisabled: boolean
+    isDisabled: boolean;
 }
 
 export interface SiteMap {
-  site: Site
-  pageMap: PageMap
-  canonicalPageMap: CanonicalPageMap
+    site: Site;
+    pageMap: PageMap;
+    canonicalPageMap: CanonicalPageMap;
 }
 
 export interface CanonicalPageMap {
-  [canonicalPageId: string]: string
+    [canonicalPageId: string]: string;
 }
 
 export interface PageUrlOverridesMap {
-  // maps from a URL path to the notion page id the page should be resolved to
-  // (this overrides the built-in URL path generation for these pages)
-  [pagePath: string]: string
+    // maps from a URL path to the notion page id the page should be resolved to
+    // (this overrides the built-in URL path generation for these pages)
+    [pagePath: string]: string;
 }
 
 export interface PageUrlOverridesInverseMap {
-  // maps from a notion page id to the URL path the page should be resolved to
-  // (this overrides the built-in URL path generation for these pages)
-  [pageId: string]: string
+    // maps from a notion page id to the URL path the page should be resolved to
+    // (this overrides the built-in URL path generation for these pages)
+    [pageId: string]: string;
 }
 
 export interface PreviewImage {
-  url: string
-  originalWidth: number
-  originalHeight: number
-  width: number
-  height: number
-  type: string
-  dataURIBase64: string
+    url: string;
+    originalWidth: number;
+    originalHeight: number;
+    width: number;
+    height: number;
+    type: string;
+    dataURIBase64: string;
 
-  error?: string
-  statusCode?: number
+    error?: string;
+    statusCode?: number;
 }
 
 export interface PreviewImageMap {
-  [url: string]: PreviewImage
+    [url: string]: PreviewImage;
+}
+
+export interface iAuthor {
+    id: string;
+    firstName: string;
+    lastName: string;
+    fullName: string;
+    profilePhoto: string;
+}
+
+export interface iPost {
+    id: string;
+    name: string;
+    tag: string;
+    published: boolean;
+    date: string;
+    slug: string;
+    Author: iAuthor[];
+    preview: string;
+    views: number;
 }

@@ -25,6 +25,7 @@ const PageHead: React.FC<Props> = ({
                 name='viewport'
                 content='width=device-width, initial-scale=1, shrink-to-fit=no'
             />
+            <script async src='https://cdn.splitbee.io/sb.js'></script>
 
             {site?.description && (
                 <>
