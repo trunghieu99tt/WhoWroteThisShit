@@ -1,0 +1,83 @@
+.svg {
+    width: 0;
+    height: 0;
+}
+
+.container {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    z-index: 9999;
+    background: #000;
+    top: 0;
+}
+
+.loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 200px;
+    filter: url(#gooey);
+}
+
+.loader span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    animation: animate 3s ease-in-out infinite;
+}
+
+.loader span:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: calc(50% - 20px);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    box-shadow: 0 0 30px #03a9f4;
+    background: linear-gradient(#fce4ec, #03a9f4);
+}
+
+.loader span:nth-child(1) {
+    animation-delay: 0.2s;
+}
+
+.loader span:nth-child(2) {
+    animation-delay: 0.4s;
+}
+
+.loader span:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+.loader span:nth-child(4) {
+    animation-delay: 0.8s;
+}
+
+.loader span:nth-child(5) {
+    animation-delay: 1s;
+}
+
+.loader span:nth-child(6) {
+    animation-delay: 1.2s;
+}
+
+.loader span:nth-child(7) {
+    animation-delay: 1.4s;
+}
+
+@keyframes animate {
+    0% {
+        transform: rotate(0);
+    }
+    50%,
+    100% {
+        transform: rotate(360deg);
+    }
+}

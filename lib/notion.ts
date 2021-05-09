@@ -13,10 +13,6 @@ export async function getPage(pageId: string): Promise<ExtendedRecordMap> {
     const pages = await notion.getPage(pageId);
     const blockIds = Object.keys(pages.block);
 
-    Object.entries(pages.block).forEach((item: any) => {
-        console.log(`item[1]`, item[1].value);
-    });
-
     const recordMap = { ...pages };
 
     const imageUrls: string[] = blockIds

@@ -9,7 +9,7 @@ module.exports = {
 
     // basic site info (required)
     name: 'Code This Shit',
-    domain: 'rikikudo.it',
+    domain: 'codethisshit.vercel.app',
     author: 'Rikikudo',
 
     // open graph metadata (optional)
@@ -29,12 +29,14 @@ module.exports = {
     defaultPageCover: null,
     defaultPageCoverPosition: 0.5,
 
+    fontFamily: 'Nunito',
+
     // image CDN host to proxy all image requests through (optional)
     // NOTE: this requires you to set up an external image proxy
     imageCDNHost: null,
 
     // Utteranc.es comments via GitHub issue comments (optional)
-    utterancesGitHubRepo: null,
+    utterancesGitHubRepo: 'trunghieu99tt/CodeThisShit',
 
     // whether or not to enable support for LQIP preview images (optional)
     // NOTE: this requires you to set up Google Firebase and add the environment

@@ -4,6 +4,8 @@ import { IoSunnyOutline, IoMoonSharp } from 'react-icons/io5';
 import * as config from 'lib/config';
 
 import styles from './styles.module.css';
+import { PageSocial } from './PageSocial';
+import SocialLinks from './SocialLinks';
 
 // TODO: merge the data and icons from PageSocial with the social links in Footer
 
@@ -43,41 +45,7 @@ export const Footer: React.FC<{
             ) : null}
 
             <div className={styles.social}>
-                {config.facebook && (
-                    <a
-                        className={styles.twitter}
-                        href={`https://facebook.com/${config.facebook}`}
-                        title={`Facebook @${config.facebook}`}
-                        target='_blank'
-                        rel='noopener noreferrer'
-                    >
-                        <FaFacebook />
-                    </a>
-                )}
-
-                {config.github && (
-                    <a
-                        className={styles.github}
-                        href={`https://github.com/${config.github}`}
-                        title={`GitHub @${config.github}`}
-                        target='_blank'
-                        rel='noopener noreferrer'
-                    >
-                        <FaGithub />
-                    </a>
-                )}
-
-                {config.linkedin && (
-                    <a
-                        className={styles.linkedin}
-                        href={`https://www.linkedin.com/in/${config.linkedin}`}
-                        title={`LinkedIn ${config.author}`}
-                        target='_blank'
-                        rel='noopener noreferrer'
-                    >
-                        <FaLinkedin />
-                    </a>
-                )}
+                <SocialLinks />
             </div>
         </footer>
     );
