@@ -1,13 +1,16 @@
 import * as React from 'react';
-import { FaGithub, FaLinkedin, FaFacebook } from 'react-icons/fa';
-import { IoSunnyOutline, IoMoonSharp } from 'react-icons/io5';
+
+// configs
 import * as config from 'lib/config';
 
-import styles from './styles.module.css';
-import { PageSocial } from './PageSocial';
+// components
 import SocialLinks from './SocialLinks';
 
-// TODO: merge the data and icons from PageSocial with the social links in Footer
+// icons
+import { IoSunnyOutline, IoMoonSharp } from 'react-icons/io5';
+
+// styles
+import styles from './styles.module.css';
 
 export const Footer: React.FC<{
     isDarkMode: boolean;

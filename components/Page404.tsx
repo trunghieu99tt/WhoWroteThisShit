@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import * as React from 'react';
 import * as types from 'lib/types';
-import { PageHead } from './PageHead/PageHead';
+import PageHead from './PageHead';
 
 import styles from './styles.module.css';
 
