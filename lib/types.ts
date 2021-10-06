@@ -9,7 +9,7 @@ export interface PageError {
 
 export interface PageProps {
     site?: Site;
-    recordMap?: ExtendedRecordMap;
+    recordMap?: ExtendedRecordMap | any;
     pageId?: string;
     error?: PageError;
     post?: iPost;
