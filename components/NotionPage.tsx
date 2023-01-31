@@ -127,7 +127,6 @@ export const NotionPage: React.FC<types.PageProps> = ({
     const socialDescription =
         getPageDescription(block, recordMap) ?? config.description;
 
-    let comments: React.ReactNode = null;
     let pageAside: React.ReactChild =
         (isBlogPost && (
             <ShareButton
@@ -138,18 +137,14 @@ export const NotionPage: React.FC<types.PageProps> = ({
         null;
 
     // only display comments and page actions on blog post pages
-    if (isBlogPost) {
-        if (config.utterancesGitHubRepo) {
-            comments = (
-                <Comment
-                    repo={config.utterancesGitHubRepo}
-                    issueMap='issue-term'
-                    issueTerm='title'
-                    theme={darkMode.value ? 'photon-dark' : 'github-light'}
-                />
-            );
-        }
-    }
+    const comments = isBlogPost && config?.utterancesGitHubRepo && (
+        <Comment
+            repo={config.utterancesGitHubRepo}
+            issueMap='issue-term'
+            issueTerm='title'
+            theme={darkMode.value ? 'photon-dark' : 'github-light'}
+        />
+    );
 
     return (
         <React.Fragment>
@@ -178,20 +173,26 @@ export const NotionPage: React.FC<types.PageProps> = ({
                         shallow,
                         locale,
                         ...props
-                    }) => (
-                        <Link
-                            href={href}
-                            as={as}
-                            passHref={passHref}
-                            prefetch={prefetch}
-                            replace={replace}
-                            scroll={scroll}
-                            shallow={shallow}
-                            locale={locale}
-                        >
-                            <a {...props} />
-                        </Link>
-                    ),
+                    }) => {
+                        const omittedCoverProps = {
+                            ...props,
+                            children: [props.children[1]]
+                        };
+                        return (
+                            <Link
+                                href={href}
+                                as={as}
+                                passHref={passHref}
+                                prefetch={prefetch}
+                                replace={replace}
+                                scroll={scroll}
+                                shallow={shallow}
+                                locale={locale}
+                            >
+                                <a {...omittedCoverProps} />
+                            </Link>
+                        );
+                    },
                     code: Code,
                     collection: Collection,
                     collectionRow: CollectionRow,

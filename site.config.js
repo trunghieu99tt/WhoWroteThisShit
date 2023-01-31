@@ -8,15 +8,15 @@ module.exports = {
     rootNotionSpaceId: null,
 
     // basic site info (required)
-    name: 'Code This Shit',
-    domain: 'codethisshit.vercel.app',
-    author: 'Rikikudo',
+    name: 'Who wrote this shit?',
+    domain: 'whowrotethisshit.vercel.app',
+    author: 'Ricky Nguyen',
 
     // open graph metadata (optional)
     description:
-        'This is a blog site which contains all blogs written by Nguyen Trung Hieu (aka Rikikudo)',
-    socialImageTitle: 'Code This Shit',
-    socialImageSubtitle: 'Hello World! 👋',
+        'This is a blog site which contains all blogs written by Nguyen Trung Hieu (aka Ricky Nguyen)',
+    socialImageTitle: 'Who wrote this shit?',
+    socialImageSubtitle: 'Can you tell me who the hell wrote this! 👋',
 
     // social usernames (optional)
     facebook: 'rikikudo99',
@@ -36,7 +36,7 @@ module.exports = {
     imageCDNHost: null,
 
     // Utteranc.es comments via GitHub issue comments (optional)
-    utterancesGitHubRepo: 'trunghieu99tt/CodeThisShit',
+    utterancesGitHubRepo: 'trunghieu99tt/WhoWroteThisShit',
 
     // whether or not to enable support for LQIP preview images (optional)
     // NOTE: this requires you to set up Google Firebase and add the environment
