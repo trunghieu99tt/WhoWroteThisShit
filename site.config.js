@@ -19,7 +19,7 @@ module.exports = {
     socialImageSubtitle: 'Can you tell me who the hell wrote this! 👋',
 
     // social usernames (optional)
-    facebook: 'rikikudo99',
+    facebook: 'ricky.nguyen99',
     github: 'trunghieu99tt',
     linkedin: 'rikikudo',
 
