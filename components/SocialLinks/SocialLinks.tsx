@@ -30,7 +30,7 @@ const socialLinks: SocialLink[] = [
 
     config.facebook && {
         name: 'facebook',
-        href: `https://www.facebook.com/${config.linkedin}`,
+        href: `https://www.facebook.com/${config.facebook}`,
         title: `Facebook ${config.author}`,
         icon: <FaFacebook />
     }
