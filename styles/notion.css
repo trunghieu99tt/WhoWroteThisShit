@@ -377,3 +377,8 @@
 .notion-page-icon-wrapper {
     position: relative;
 }
+
+pre[class*='language-']:before,
+pre[class*='language-']:after {
+    display: none !important;
+}
