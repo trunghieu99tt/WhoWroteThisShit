@@ -7,6 +7,7 @@ import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import PageHead from '../PageHead';
 
 import classes from './errorPage.module.css';
+
 import { PageProps } from 'lib/types';
 
 interface Props extends PageProps {

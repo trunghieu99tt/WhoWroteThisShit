@@ -10,11 +10,11 @@ module.exports = {
     // basic site info (required)
     name: 'Who wrote this shit?',
     domain: 'whowrotethisshit.vercel.app',
-    author: 'Ricky Nguyen',
+    author: 'Elliot Nguyen',
 
     // open graph metadata (optional)
     description:
-        'This is a blog site which contains all blogs written by Nguyen Trung Hieu (aka Ricky Nguyen)',
+        'This is a blog site which contains all blogs written by Nguyen Trung Hieu (aka Elliot Nguyen)',
     socialImageTitle: 'Who wrote this shit?',
     socialImageSubtitle: 'Can you tell me who the hell wrote this! 👋',
 
@@ -29,7 +29,7 @@ module.exports = {
     defaultPageCover: null,
     defaultPageCoverPosition: 0.5,
 
-    fontFamily: 'Nunito',
+    fontFamily: 'Mali',
 
     // image CDN host to proxy all image requests through (optional)
     // NOTE: this requires you to set up an external image proxy

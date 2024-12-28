@@ -1,5 +1,9 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap'); */
 
+:root {
+    ---primary-color: #000;
+}
+
 * {
     box-sizing: border-box;
 }
