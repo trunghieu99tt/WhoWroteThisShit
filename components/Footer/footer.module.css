@@ -2,12 +2,13 @@
     width: 100%;
     max-width: 1100px;
     margin: auto auto 0;
-    padding: 8px;
+    padding: 1rem 0.5rem;
 
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    border-top: 2px solid #000;
 }
 
 .copyright {

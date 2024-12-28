@@ -17,12 +17,14 @@ const Footer: React.FC<{
     toggleDarkMode: () => void;
 }> = ({ isDarkMode, toggleDarkMode }) => {
     const [hasMounted, setHasMounted] = React.useState(false);
+    const musicPlayer = React.useRef<HTMLAudioElement | null>(null);
     const toggleDarkModeCb = React.useCallback(
         (e) => {
             e.preventDefault();
             toggleDarkMode();
+            musicPlayer.current?.play();
         },
-        [toggleDarkMode]
+        [toggleDarkMode, musicPlayer]
     );
 
     React.useEffect(() => {
@@ -32,7 +34,7 @@ const Footer: React.FC<{
     return (
         <footer className={styles.footer}>
             <div className={styles.copyright}>
-                Copyright 2021 {config.author}
+                Copyright 2024 @{config.author}
             </div>
 
             {hasMounted ? (
@@ -49,6 +51,9 @@ const Footer: React.FC<{
 
             <div className={styles.social}>
                 <SocialLinks />
+            </div>
+            <div className={styles.music} style={{ display: 'none' }}>
+                <audio src='./switch.mp3' ref={musicPlayer} controls />
             </div>
         </footer>
     );
