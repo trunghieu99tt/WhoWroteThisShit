@@ -188,9 +188,8 @@ export const NotionPage: React.FC<types.PageProps> = ({
                                 scroll={scroll}
                                 shallow={shallow}
                                 locale={locale}
-                            >
-                                <a {...omittedCoverProps} />
-                            </Link>
+                                {...omittedCoverProps}
+                            ></Link>
                         );
                     },
                     code: Code,

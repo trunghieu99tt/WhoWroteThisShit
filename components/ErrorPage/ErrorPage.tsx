@@ -48,10 +48,8 @@ const ErrorPage = ({ statusCode, error, pageId }: Props) => {
                         </p>
                     )}
 
-                    <Link href='/'>
-                        <a className={classes.link}>
-                            <FaArrowRight /> Back to Home <FaArrowLeft />
-                        </a>
+                    <Link href='/' className={classes.link}>
+                        <FaArrowRight /> Back to Home <FaArrowLeft />
                     </Link>
 
                     <img

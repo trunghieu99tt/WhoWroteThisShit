@@ -370,8 +370,8 @@
     gap: 0.5rem;
 }
 
-.notion-page-cover {
-    display: none;
+.notion-page-cover-wrapper {
+    display: none !important;
 }
 
 .notion-page-icon-wrapper {
