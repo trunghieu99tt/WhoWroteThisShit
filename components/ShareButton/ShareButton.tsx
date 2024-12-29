@@ -25,7 +25,7 @@ const ShareButton = ({ url, title }: Props) => {
                     quote={title}
                     className={classes.facebookShareButton}
                 >
-                    <FacebookIcon size={32} round />
+                    <FacebookIcon size={32} round iconFillColor='#fff' />
                 </FacebookShareButton>
 
                 <TwitterShareButton
@@ -33,7 +33,7 @@ const ShareButton = ({ url, title }: Props) => {
                     title={title}
                     className={classes.twitterShareButton}
                 >
-                    <TwitterIcon size={32} round />
+                    <TwitterIcon size={32} round iconFillColor='#fff' />
                 </TwitterShareButton>
 
                 <EmailShareButton
@@ -42,7 +42,7 @@ const ShareButton = ({ url, title }: Props) => {
                     body='body'
                     className={classes.emailShareButton}
                 >
-                    <EmailIcon size={32} round />
+                    <EmailIcon size={32} round iconFillColor='#fff' />
                 </EmailShareButton>
             </div>
         </section>
