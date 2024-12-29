@@ -20,11 +20,11 @@ import 'katex/dist/katex.min.css';
 // core styles for static tweet renderer (optional)
 import 'react-static-tweets/styles.css';
 
-// global style overrides for notion
-import 'styles/notion.css';
-
 // global style overrides for prism theme (optional)
 import 'styles/prism-theme.css';
+
+// global style overrides for notion
+import 'styles/notion.css';
 
 // here we're bringing in any languages we want to support for
 // syntax highlighting via Notion's Code block
@@ -33,6 +33,8 @@ import 'prismjs/components/prism-markup';
 import 'prismjs/components/prism-javascript';
 import 'prismjs/components/prism-typescript';
 import 'prismjs/components/prism-bash';
+import 'prismjs/components/prism-c';
+import 'prismjs/components/prism-java';
 
 import React from 'react';
 import { useRouter } from 'next/router';
