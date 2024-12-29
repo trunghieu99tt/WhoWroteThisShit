@@ -360,6 +360,10 @@
     }
 }
 
+.notion-aside-table-of-contents {
+    max-height: 60vh !important;
+}
+
 .notion-aside-table-of-contents .notion-table-of-contents-item-body {
     line-height: 1.5;
     text-wrap: auto;
