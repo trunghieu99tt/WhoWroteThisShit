@@ -1,7 +1,5 @@
 import * as React from 'react';
-import Link from 'next/link';
 import dynamic from 'next/dynamic';
-import cs from 'classnames';
 import { useRouter } from 'next/router';
 import { useSearchParam } from 'react-use';
 import BodyClassName from 'react-body-classname';
@@ -9,19 +7,13 @@ import useDarkMode from 'use-dark-mode';
 import { PageBlock } from 'notion-types';
 
 // core notion renderer
-import {
-    NotionRenderer,
-    Code,
-    Collection,
-    CollectionRow
-} from 'react-notion-x';
+import { NotionRenderer } from 'react-notion-x';
 
 // utils
 import { getBlockTitle } from 'notion-utils';
 import { mapPageUrl, getCanonicalPageUrl } from 'lib/map-page-url';
 import { mapNotionImageUrl } from 'lib/map-image-url';
 import { getPageDescription } from 'lib/get-page-description';
-import { searchNotion } from 'lib/search-notion';
 import * as types from 'lib/types';
 import * as config from 'lib/config';
 
@@ -35,36 +27,64 @@ import ErrorPage from 'pages/404';
 import Comment from './Comment';
 import BlogHeader from './BlogHeader';
 
-// const Code = dynamic(() =>
-//   import('react-notion-x').then((notion) => notion.Code)
-// )
-//
-// const Collection = dynamic(() =>
-//   import('react-notion-x').then((notion) => notion.Collection)
-// )
-//
-// const CollectionRow = dynamic(
-//   () => import('react-notion-x').then((notion) => notion.CollectionRow),
-//   {
-//     ssr: false
-//   }
-// )
-
-const Pdf = dynamic(() =>
-    import('react-notion-x').then((notion) => notion.Pdf)
+const Code = dynamic(() =>
+    import('react-notion-x/build/third-party/code').then(async (m) => {
+        // additional prism syntaxes
+        await Promise.all([
+            import('prismjs/components/prism-markup-templating.js'),
+            import('prismjs/components/prism-markup.js'),
+            import('prismjs/components/prism-bash.js'),
+            import('prismjs/components/prism-c.js'),
+            import('prismjs/components/prism-cpp.js'),
+            import('prismjs/components/prism-csharp.js'),
+            import('prismjs/components/prism-docker.js'),
+            import('prismjs/components/prism-java.js'),
+            import('prismjs/components/prism-js-templates.js'),
+            import('prismjs/components/prism-coffeescript.js'),
+            import('prismjs/components/prism-diff.js'),
+            import('prismjs/components/prism-git.js'),
+            import('prismjs/components/prism-go.js'),
+            import('prismjs/components/prism-graphql.js'),
+            import('prismjs/components/prism-handlebars.js'),
+            import('prismjs/components/prism-less.js'),
+            import('prismjs/components/prism-makefile.js'),
+            import('prismjs/components/prism-markdown.js'),
+            import('prismjs/components/prism-objectivec.js'),
+            import('prismjs/components/prism-ocaml.js'),
+            import('prismjs/components/prism-python.js'),
+            import('prismjs/components/prism-reason.js'),
+            import('prismjs/components/prism-rust.js'),
+            import('prismjs/components/prism-sass.js'),
+            import('prismjs/components/prism-scss.js'),
+            import('prismjs/components/prism-solidity.js'),
+            import('prismjs/components/prism-sql.js'),
+            import('prismjs/components/prism-stylus.js'),
+            import('prismjs/components/prism-swift.js'),
+            import('prismjs/components/prism-wasm.js'),
+            import('prismjs/components/prism-yaml.js')
+        ]);
+        return m.Code;
+    })
 );
-
+const Collection = dynamic(() =>
+    import('react-notion-x/build/third-party/collection').then(
+        (m) => m.Collection
+    )
+);
 const Equation = dynamic(() =>
-    import('react-notion-x').then((notion) => notion.Equation)
+    import('react-notion-x/build/third-party/equation').then((m) => m.Equation)
 );
-
-// we're now using a much lighter-weight tweet renderer react-static-tweets
-// instead of the official iframe-based embed widget from twitter
-// const Tweet = dynamic(() => import('react-tweet-embed'))
-
+const Pdf = dynamic(
+    () => import('react-notion-x/build/third-party/pdf').then((m) => m.Pdf),
+    {
+        ssr: false
+    }
+);
 const Modal = dynamic(
-    () => import('react-notion-x').then((notion) => notion.Modal),
-    { ssr: false }
+    () => import('react-notion-x/build/third-party/modal').then((m) => m.Modal),
+    {
+        ssr: false
+    }
 );
 
 export const NotionPage: React.FC<types.PageProps> = ({
@@ -163,41 +183,11 @@ export const NotionPage: React.FC<types.PageProps> = ({
             <NotionRenderer
                 bodyClassName={pageId === site.rootNotionPageId && 'index-page'}
                 components={{
-                    pageLink: ({
-                        href,
-                        as,
-                        passHref,
-                        prefetch,
-                        replace,
-                        scroll,
-                        shallow,
-                        locale,
-                        ...props
-                    }) => {
-                        const omittedCoverProps = {
-                            ...props,
-                            children: [props.children[1]]
-                        };
-                        return (
-                            <Link
-                                href={href}
-                                as={as}
-                                passHref={passHref}
-                                prefetch={prefetch}
-                                replace={replace}
-                                scroll={scroll}
-                                shallow={shallow}
-                                locale={locale}
-                                {...omittedCoverProps}
-                            ></Link>
-                        );
-                    },
-                    code: Code,
-                    collection: Collection,
-                    collectionRow: CollectionRow,
-                    modal: Modal,
-                    pdf: Pdf,
-                    equation: Equation
+                    Code,
+                    Collection,
+                    Modal,
+                    Pdf,
+                    Equation
                 }}
                 pageHeader={post && <BlogHeader post={post} />}
                 recordMap={recordMap}

@@ -78,6 +78,7 @@
 }
 
 .notion-collection-card-cover {
+    display: none;
     border-radius: 16px;
     overflow: visible;
     height: 10rem;
@@ -391,4 +392,21 @@ pre[class*='language-']:after {
     color: #eb5757 !important;
     padding: 0.2em 0.4em !important;
     background: var(--bg-color-2) !important;
+}
+
+.notion-page-icon-hero {
+    position: relative;
+}
+
+.notion-page-icon-hero.notion-page-icon-image .notion-page-icon {
+    border-radius: 50%;
+}
+
+.notion-nav-header {
+    max-width: 1140px;
+    margin: 0 auto;
+}
+
+.notion-page-title .notion-page-icon-inline {
+    display: none;
 }
