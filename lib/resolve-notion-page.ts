@@ -70,7 +70,8 @@ export async function resolveNotionPage(domain: string, rawPageId?: string) {
 
         recordMap = await getPage(pageId);
     }
-    site.fontFamily = 'Montserrat';
+    site.fontFamily =
+        '-apple-system, BlinkMacSystemFont, "San Francisco", "Segoe UI", Roboto, Helvetica, Arial, sans-serif';
     const props = { site, recordMap, pageId };
     return { ...props, ...(await acl.pageAcl(props)) };
 }
