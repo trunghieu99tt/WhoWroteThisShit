@@ -70,7 +70,7 @@ export async function resolveNotionPage(domain: string, rawPageId?: string) {
 
         recordMap = await getPage(pageId);
     }
-    site.fontFamily = 'Mali';
+    site.fontFamily = 'Montserrat';
     const props = { site, recordMap, pageId };
     return { ...props, ...(await acl.pageAcl(props)) };
 }
