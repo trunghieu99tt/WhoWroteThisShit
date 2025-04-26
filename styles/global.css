@@ -40,3 +40,7 @@ body {
     height: 1.2em !important;
     width: 1.2em !important;
 }
+
+.katex {
+    font: normal 1.1em KaTeX_Main, Times New Roman, serif !important;
+}
