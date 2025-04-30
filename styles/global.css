@@ -42,5 +42,41 @@ body {
 }
 
 .katex {
-    font: normal 1.1em KaTeX_Main, Times New Roman, serif !important;
+    font: normal 1em CMU Serif Roman, KaTeX_Main, Times New Roman, serif !important;
+}
+
+@font-face {
+    font-family: 'CMU Serif Roman';
+    src: url('/fonts/cmunrm.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'TeX Gyre Bonum Regular';
+    src: url('/fonts/TeXGyreBonum-Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.notion {
+    font-size: 110% !important;
+    /* font-weight: bold; */
+}
+
+.notion-inline-code {
+    font-family: 'CMU Serif Roman' !important;
+    font-size: 90%;
+}
+
+.notion.notion-app {
+    font-weight: normal !important;
+}
+
+.notion-aside-table-of-contents .notion-table-of-contents-item {
+    font-size: 80% !important;
+}
+
+.notion-collection-row-value {
+    font-size: 1rem !important;
 }

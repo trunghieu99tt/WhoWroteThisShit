@@ -14,7 +14,7 @@
 
 .notion-page {
     padding-bottom: calc(max(5vh, 32px)) !important;
-    line-height: 1.65;
+    line-height: 1.4;
 }
 
 .index-page {
@@ -22,7 +22,7 @@
 }
 
 .notion-text {
-    padding: 0.5em 2px;
+    /* padding: 0.5em 2px; */
 }
 
 .notion-asset-caption {
@@ -111,7 +111,7 @@
 
 .notion-quote {
     padding: 0.2em 0.75em;
-    font-size: 1.1em;
+    font-size: 1em;
 }
 
 .notion-h1,

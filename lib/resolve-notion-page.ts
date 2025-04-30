@@ -70,7 +70,9 @@ export async function resolveNotionPage(domain: string, rawPageId?: string) {
 
         recordMap = await getPage(pageId);
     }
-    site.fontFamily = 'Space Grotesk';
+    // site.fontFamily = 'Space Grotesk';
+    site.fontFamily = 'CMU Serif Roman';
+    // site.fontFamily = 'TeX Gyre Bonum Regular';
     const props = { site, recordMap, pageId };
     return { ...props, ...(await acl.pageAcl(props)) };
 }
