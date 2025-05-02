@@ -80,3 +80,7 @@ body {
 .notion-collection-row-value {
     font-size: 1rem !important;
 }
+
+.calendly-badge-widget .calendly-badge-content {
+    font-family: 'CMU Serif Roman' !important;
+}

@@ -29,6 +29,18 @@ const Footer: React.FC<{
 
     React.useEffect(() => {
         setHasMounted(true);
+        // Check if Calendly is available in the window object
+        initCalendly();
+        function initCalendly() {
+            if (typeof window !== 'undefined' && (window as any).Calendly) {
+                (window as any).Calendly.initBadgeWidget({
+                    url: 'https://calendly.com/ricky_nguyen/30min',
+                    text: 'Coffee talk with me!',
+                    color: '#070707',
+                    textColor: '#ffffff'
+                });
+            }
+        }
     }, []);
 
     const copyRightYear = new Date().getUTCFullYear();

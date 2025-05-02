@@ -31,6 +31,16 @@ const PageHead: React.FC<Props> = ({
                 data-website-id='3580f550-d3be-4d55-ba73-12593758e87b'
             ></script>
             <script async src='https://cdn.splitbee.io/sb.js'></script>
+            <link
+                href='https://assets.calendly.com/assets/external/widget.css'
+                rel='stylesheet'
+            />
+            <script
+                defer
+                type='text/javascript'
+                src='https://assets.calendly.com/assets/external/widget.js'
+                async
+            ></script>
 
             {site?.description && (
                 <>
