@@ -26,13 +26,6 @@ const socialLinks: SocialLink[] = [
         href: `https://www.linkedin.com/in/${config.linkedin}`,
         title: `LinkedIn ${config.author}`,
         icon: <FaLinkedin />
-    },
-
-    config.facebook && {
-        name: 'facebook',
-        href: `https://www.facebook.com/${config.facebook}`,
-        title: `Facebook ${config.author}`,
-        icon: <FaFacebook />
     }
 ];
 
