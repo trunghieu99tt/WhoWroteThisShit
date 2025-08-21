@@ -70,9 +70,14 @@ export async function resolveNotionPage(domain: string, rawPageId?: string) {
 
         recordMap = await getPage(pageId);
     }
-    // site.fontFamily = 'Space Grotesk';
-    site.fontFamily = 'CMU Serif Roman';
-    // site.fontFamily = 'TeX Gyre Bonum Regular';
+
+    // Note: font family can be overridden by user selection via FontChooser
+    // The CustomFont component will use the user's localStorage preference if available
+    // Fallback to a default if no font family is set in site config
+    if (!site.fontFamily) {
+        site.fontFamily = 'CMU Serif Roman';
+    }
+
     const props = { site, recordMap, pageId };
     return { ...props, ...(await acl.pageAcl(props)) };
 }

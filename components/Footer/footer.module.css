@@ -21,6 +21,17 @@
     user-select: none;
 }
 
+.settings {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.fontChooserWrapper {
+    display: flex;
+    align-items: center;
+}
+
 .settings a,
 .social a {
     cursor: pointer;
@@ -62,16 +73,20 @@
         flex-direction: column;
     }
 
-    .footer > div {
+    .footer>div {
         margin-top: 1em;
     }
 
     .footer .settings {
         order: 1;
+        flex-direction: column;
+        gap: 0.5rem;
     }
+
     .footer .social {
         order: 2;
     }
+
     .footer .copyright {
         order: 3;
     }

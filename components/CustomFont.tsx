@@ -2,32 +2,69 @@ import Head from 'next/head';
 import * as React from 'react';
 import * as types from '../lib/types';
 
-export const CustomFont: React.FC<{ site: types.Site }> = ({ site }) => {
-    if (!site.fontFamily) {
+interface CustomFontProps {
+    site: types.Site;
+    fontFamily?: string; // Allow overriding the site's font family
+}
+
+// Define Google Fonts (fonts that need to be loaded from Google Fonts)
+const GOOGLE_FONTS = [
+    'Inter',
+    'Mali',
+    'Poppins',
+    'Source Sans Pro',
+    'Roboto',
+    'Open Sans',
+    'Nunito',
+    'Lato',
+    'Montserrat'
+];
+
+export const CustomFont: React.FC<CustomFontProps> = ({ site, fontFamily }) => {
+    // Use provided fontFamily prop, fallback to site config, then to default
+    const effectiveFontFamily = fontFamily || site.fontFamily;
+
+    // React to font changes by updating the style when fontFamily changes
+    React.useEffect(() => {
+        if (!effectiveFontFamily) return;
+
+        // Create or update the dynamic font style
+        const styleId = 'dynamic-font-style';
+        let styleElement = document.getElementById(styleId) as HTMLStyleElement;
+
+        if (!styleElement) {
+            styleElement = document.createElement('style');
+            styleElement.id = styleId;
+            document.head.appendChild(styleElement);
+        }
+
+        const cssFontFamily = `"${effectiveFontFamily}"`;
+        styleElement.textContent = `
+            .notion.notion-app {
+                font-family: ${cssFontFamily}, -apple-system, BlinkMacSystemFont,
+                  'Segoe UI', Helvetica, 'Apple Color Emoji', Arial, sans-serif,
+                  'Segoe UI Emoji', 'Segoe UI Symbol' !important;
+            }
+        `;
+    }, [effectiveFontFamily]);
+
+    if (!effectiveFontFamily) {
         return null;
     }
 
-    // https://developers.google.com/fonts/docs/css2
-    const fontFamilies = [site.fontFamily];
-    const googleFontFamilies = fontFamilies
-        .map((font) => font.replace(/ /g, '+'))
-        .map((font) => `family=${font}:ital,wght@0,200..700;1,200..700`)
-        .join('&');
-    const googleFontsLink = `https://fonts.googleapis.com/css?${googleFontFamilies}&display=swap`;
-    const cssFontFamilies = fontFamilies.map((font) => `"${font}"`).join(', ');
+    const isGoogleFont = GOOGLE_FONTS.includes(effectiveFontFamily);
+
+    // Only load Google Fonts for fonts that require it
+    const googleFontsLink = isGoogleFont
+        ? `https://fonts.googleapis.com/css2?family=${effectiveFontFamily.replace(/ /g, '+')}:ital,wght@0,200..700;1,200..700&display=swap`
+        : null;
 
     return (
         <>
             <Head>
-                <link rel='stylesheet' href={googleFontsLink} />
-
-                <style>{`
-          .notion.notion-app {
-            font-family: ${cssFontFamilies}, -apple-system, BlinkMacSystemFont,
-              'Segoe UI', Helvetica, 'Apple Color Emoji', Arial, sans-serif,
-              'Segoe UI Emoji', 'Segoe UI Symbol';
-          }
-        `}</style>
+                {googleFontsLink && (
+                    <link rel='stylesheet' href={googleFontsLink} />
+                )}
             </Head>
         </>
     );

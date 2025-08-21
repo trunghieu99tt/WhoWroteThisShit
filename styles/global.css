@@ -54,7 +54,7 @@ body {
 
 @font-face {
     font-family: 'TeX Gyre Bonum Regular';
-    src: url('/fonts/TeXGyreBonum-Regular.otf') format('opentype');
+    src: url('/fonts/TeX Gyre Bonum Regular.otf') format('opentype');
     font-weight: normal;
     font-style: normal;
 }

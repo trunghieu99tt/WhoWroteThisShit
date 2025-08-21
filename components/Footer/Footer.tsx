@@ -15,7 +15,8 @@ import styles from './footer.module.css';
 const Footer: React.FC<{
     isDarkMode: boolean;
     toggleDarkMode: () => void;
-}> = ({ isDarkMode, toggleDarkMode }) => {
+    fontChooser?: React.ReactNode;
+}> = ({ isDarkMode, toggleDarkMode, fontChooser }) => {
     const [hasMounted, setHasMounted] = React.useState(false);
     const musicPlayer = React.useRef<HTMLAudioElement | null>(null);
     const toggleDarkModeCb = React.useCallback(
@@ -53,10 +54,15 @@ const Footer: React.FC<{
 
             {hasMounted ? (
                 <div className={styles.settings}>
+                    {fontChooser && (
+                        <div className={styles.fontChooserWrapper}>
+                            {fontChooser}
+                        </div>
+                    )}
                     <a
                         className={styles.toggleDarkMode}
                         onClick={toggleDarkModeCb}
-                        title='Tottle dark mode'
+                        title='Toggle dark mode'
                     >
                         {isDarkMode ? <IoMoonSharp /> : <IoSunnyOutline />}
                     </a>

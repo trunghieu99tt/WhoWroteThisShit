@@ -1,0 +1,280 @@
+.fontChooser {
+    position: fixed;
+    bottom: 5rem;
+    right: 2rem;
+    z-index: 1000;
+    max-width: calc(100vw - 4rem);
+}
+
+.fontToggle {
+    background: #070707;
+    border: 2px solid #070707;
+    border-radius: 20px;
+    padding: 10px 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #ffffff;
+    transition: all 0.3s ease;
+    min-width: 140px;
+    justify-content: space-between;
+    box-shadow: 0 2px 10px rgba(7, 7, 7, 0.2);
+}
+
+.fontToggle:hover {
+    background: #1a1a1a;
+    border-color: #1a1a1a;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 15px rgba(7, 7, 7, 0.3);
+}
+
+.fontToggle:focus {
+    outline: none;
+    background: #1a1a1a;
+    border-color: #1a1a1a;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
+}
+
+.chevron {
+    transition: transform 0.2s ease;
+    font-size: 12px;
+    opacity: 0.8;
+    color: #ffffff;
+}
+
+.chevron.open {
+    transform: rotate(180deg);
+}
+
+.fontDropdown {
+    position: absolute;
+    bottom: 100%;
+    right: 0;
+    background: #ffffff;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    z-index: 1001;
+    margin-bottom: 4px;
+    max-height: 50vh;
+    overflow-y: auto;
+    min-width: 280px;
+    max-width: 320px;
+    width: max-content;
+    color: #333333;
+}
+
+
+
+.fontList {
+    padding: 4px;
+}
+
+.fontOption {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 12px;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: left;
+    margin-bottom: 2px;
+    color: #333333;
+}
+
+.fontOption:hover {
+    background: #f8f9fa;
+    color: #333333;
+}
+
+.fontOption.selected {
+    background: #e3f2fd;
+    color: #007bff;
+}
+
+.fontInfo {
+    flex: 1;
+}
+
+.fontName {
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 4px;
+    color: inherit;
+}
+
+.fontPreview {
+    font-size: 12px;
+    opacity: 0.7;
+    line-height: 1.4;
+    color: inherit;
+}
+
+.checkmark {
+    color: #007bff;
+    font-size: 16px;
+    margin-left: 8px;
+}
+
+/* Dark mode support - using same styling for consistency */
+:global(.dark-mode) .fontToggle {
+    background: #070707;
+    border-color: #070707;
+    color: #ffffff;
+}
+
+:global(.dark-mode) .fontToggle:hover {
+    background: #1a1a1a;
+    border-color: #1a1a1a;
+}
+
+:global(.dark-mode) .fontDropdown {
+    background: #2a2a2a;
+    border-color: #444;
+    color: #ffffff;
+}
+
+:global(.dark-mode) .fontOption {
+    color: #ffffff;
+}
+
+:global(.dark-mode) .fontOption:hover {
+    background: #3a3a3a;
+    color: #ffffff;
+}
+
+:global(.dark-mode) .fontOption.selected {
+    background: #1e3a5f;
+    color: #4fc3f7;
+}
+
+:global(.dark-mode) .fontName {
+    color: #ffffff;
+}
+
+:global(.dark-mode) .fontPreview {
+    color: #cccccc;
+}
+
+:global(.dark-mode) .checkmark {
+    color: #4fc3f7;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .fontDropdown {
+        right: 0;
+        left: auto;
+        width: 280px;
+        min-width: 280px;
+        max-width: calc(100vw - 2rem);
+        max-height: 40vh;
+    }
+
+    .fontToggle {
+        min-width: 120px;
+        font-size: 13px;
+        padding: 8px 14px;
+        border-radius: 18px;
+    }
+
+    .fontOption {
+        padding: 10px;
+    }
+
+    .fontName {
+        font-size: 13px;
+    }
+
+    .fontPreview {
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 480px) {
+    .fontDropdown {
+        width: 260px;
+        min-width: 240px;
+        max-width: calc(100vw - 1rem);
+        max-height: 35vh;
+    }
+
+    .fontToggle {
+        min-width: 100px;
+        font-size: 12px;
+        padding: 7px 12px;
+        border-radius: 16px;
+    }
+}
+
+@media (max-width: 360px) {
+    .fontChooser {
+        right: 1rem;
+        bottom: 3rem;
+        max-width: calc(100vw - 2rem);
+    }
+
+    .fontDropdown {
+        width: 220px;
+        min-width: 220px;
+        max-width: calc(100vw - 0.5rem);
+        max-height: 30vh;
+    }
+
+    .fontToggle {
+        min-width: 90px;
+        font-size: 11px;
+        padding: 6px 10px;
+        border-radius: 14px;
+    }
+
+    .fontOption {
+        padding: 8px;
+    }
+
+    .fontName {
+        font-size: 12px;
+    }
+
+    .fontPreview {
+        font-size: 10px;
+    }
+}
+
+/* Animation */
+.fontDropdown {
+    animation: slideUp 0.2s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Focus management */
+.fontOption:focus {
+    outline: none;
+    background: #f8f9fa;
+    box-shadow: inset 0 0 0 2px #007bff;
+    color: #333333;
+}
+
+:global(.dark-mode) .fontOption:focus {
+    background: #3a3a3a;
+    box-shadow: inset 0 0 0 2px #4fc3f7;
+    color: #ffffff;
+}

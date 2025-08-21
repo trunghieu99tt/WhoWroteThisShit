@@ -26,6 +26,9 @@ import ShareButton from './ShareButton';
 import ErrorPage from 'pages/404';
 import Comment from './Comment';
 import BlogHeader from './BlogHeader';
+import FontChooser from './FontChooser';
+import { useFontChooser } from './FontChooser/useFontChooser';
+import { FontPreloader } from './FontChooser/FontPreloader';
 
 const Code = dynamic(() =>
     import('react-notion-x/build/third-party/code').then(async (m) => {
@@ -105,6 +108,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
     const searchParams = new URLSearchParams(params);
 
     const darkMode = useDarkMode(false, { classNameDark: 'dark-mode' });
+    const { selectedFont, changeFont } = useFontChooser();
 
     if (router.isFallback) {
         return <Loading />;
@@ -176,7 +180,8 @@ export const NotionPage: React.FC<types.PageProps> = ({
                 socialImage={socialImage}
             />
 
-            <CustomFont site={site} />
+            <FontPreloader />
+            <CustomFont site={site} fontFamily={selectedFont} />
 
             {isLiteMode && <BodyClassName className='notion-lite' />}
 
@@ -210,6 +215,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
                     <Footer
                         isDarkMode={darkMode.value}
                         toggleDarkMode={darkMode.toggle}
+                        fontChooser={<FontChooser onFontChange={changeFont} />}
                     />
                 }
             />
