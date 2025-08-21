@@ -29,6 +29,7 @@ import BlogHeader from './BlogHeader';
 import FontChooser from './FontChooser';
 import { useFontChooser } from './FontChooser/useFontChooser';
 import { FontPreloader } from './FontChooser/FontPreloader';
+import Toolbox from './Toolbox';
 
 const Code = dynamic(() =>
     import('react-notion-x/build/third-party/code').then(async (m) => {
@@ -211,13 +212,15 @@ export const NotionPage: React.FC<types.PageProps> = ({
                 // searchNotion={searchNotion}
                 pageFooter={comments}
                 pageAside={pageAside}
-                footer={
-                    <Footer
-                        isDarkMode={darkMode.value}
-                        toggleDarkMode={darkMode.toggle}
-                        fontChooser={<FontChooser onFontChange={changeFont} />}
-                    />
-                }
+                footer={<Footer />}
+            />
+
+            {/* Unified Toolbox with font chooser, theme toggle, and Calendly */}
+            <Toolbox
+                isDarkMode={darkMode.value}
+                toggleDarkMode={darkMode.toggle}
+                onFontChange={changeFont}
+                selectedFont={selectedFont}
             />
         </React.Fragment>
     );

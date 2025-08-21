@@ -12,6 +12,7 @@ export interface FontOption {
 interface FontChooserProps {
     onFontChange?: (fontFamily: string) => void;
     className?: string;
+    variant?: 'standalone' | 'inline';
 }
 
 const FONT_OPTIONS: FontOption[] = [
@@ -67,7 +68,7 @@ const FONT_OPTIONS: FontOption[] = [
 
 const STORAGE_KEY = 'selectedFontFamily';
 
-const FontChooser: React.FC<FontChooserProps> = ({ onFontChange, className }) => {
+const FontChooser: React.FC<FontChooserProps> = ({ onFontChange, className, variant = 'standalone' }) => {
     const [selectedFont, setSelectedFont] = React.useState<string>('CMU Serif Roman');
     const [isOpen, setIsOpen] = React.useState(false);
     const [hasMounted, setHasMounted] = React.useState(false);
@@ -131,7 +132,7 @@ const FontChooser: React.FC<FontChooserProps> = ({ onFontChange, className }) =>
     }
 
     return (
-        <div className={`${styles.fontChooser} ${className || ''}`} ref={dropdownRef}>
+        <div className={`${styles.fontChooser} ${variant === 'inline' ? styles.inline : ''} ${className || ''}`} ref={dropdownRef}>
             <button
                 className={styles.fontToggle}
                 onClick={() => setIsOpen(!isOpen)}

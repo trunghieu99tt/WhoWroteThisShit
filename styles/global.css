@@ -81,6 +81,12 @@ body {
     font-size: 1rem !important;
 }
 
-.calendly-badge-widget .calendly-badge-content {
-    font-family: 'CMU Serif Roman' !important;
+/* Hide Calendly badge widget since we're using our own button in the Toolbox */
+.calendly-badge-widget {
+    display: none !important;
+}
+
+
+.calendly-overlay .calendly-popup .calendly-popup-content {
+    background-color: #fff !important;
 }

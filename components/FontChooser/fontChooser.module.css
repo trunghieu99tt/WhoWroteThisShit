@@ -6,6 +6,15 @@
     max-width: calc(100vw - 4rem);
 }
 
+/* Inline variant for use within other components */
+.fontChooser.inline {
+    position: relative;
+    bottom: auto;
+    right: auto;
+    z-index: auto;
+    max-width: 100%;
+}
+
 .fontToggle {
     background: #070707;
     border: 2px solid #070707;
