@@ -42,35 +42,8 @@ import { bootstrap } from 'lib/bootstrap-client';
 import { fathomId, fathomConfig } from 'lib/config';
 import * as Fathom from 'fathom-client';
 
-// Preload common Google Fonts for better performance
-const COMMON_FONTS = ['Inter', 'Mali', 'Poppins', 'Source Sans Pro', 'Roboto'];
-
-const preloadCommonFonts = () => {
-    if (typeof window === 'undefined') return;
-
-    COMMON_FONTS.forEach(fontFamily => {
-        const fontUrl = `https://fonts.googleapis.com/css2?family=${fontFamily.replace(/ /g, '+')}:ital,wght@0,200..700;1,200..700&display=swap`;
-
-        // Check if already loaded
-        if (document.querySelector(`link[href="${fontUrl}"]`)) return;
-
-        // Create preload link
-        const link = document.createElement('link');
-        link.rel = 'preload';
-        link.as = 'style';
-        link.href = fontUrl;
-        link.onload = () => {
-            // Convert to stylesheet after preload
-            link.rel = 'stylesheet';
-        };
-        document.head.appendChild(link);
-    });
-};
-
 if (typeof window !== 'undefined') {
     bootstrap();
-    // Preload fonts after bootstrap
-    setTimeout(preloadCommonFonts, 100);
 }
 
 export default function App({ Component, pageProps }) {

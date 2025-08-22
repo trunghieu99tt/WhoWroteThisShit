@@ -12,6 +12,93 @@ export default class MyDocument extends Document {
                     <Head>
                         <link rel='shortcut icon' href='/favicon.ico' />
 
+                        {/* Preload common Google Fonts to prevent FOIT/FOUT */}
+                        <link rel="preconnect" href="https://fonts.googleapis.com" />
+                        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+                        <link
+                            rel="preload"
+                            as="style"
+                            href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,200..700;1,200..700&display=swap"
+                        />
+                        <link
+                            rel="preload"
+                            as="style"
+                            href="https://fonts.googleapis.com/css2?family=Mali:ital,wght@0,200..700;1,200..700&display=swap"
+                        />
+                        <link
+                            rel="preload"
+                            as="style"
+                            href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200..700;1,200..700&display=swap"
+                        />
+                        <link
+                            rel="preload"
+                            as="style"
+                            href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200..700;1,200..700&display=swap"
+                        />
+                        <link
+                            rel="preload"
+                            as="style"
+                            href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,200..700;1,200..700&display=swap"
+                        />
+                        <link
+                            rel="preload"
+                            as="style"
+                            href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,200..700;1,200..700&display=swap"
+                        />
+                        <link
+                            rel="preload"
+                            as="style"
+                            href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..700;1,200..700&display=swap"
+                        />
+                        <link
+                            rel="preload"
+                            as="style"
+                            href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,200..700;1,200..700&display=swap"
+                        />
+                        <link
+                            rel="preload"
+                            as="style"
+                            href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200..700;1,200..700&display=swap"
+                        />
+
+                        {/* Load the stylesheets */}
+                        <link
+                            rel="stylesheet"
+                            href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,200..700;1,200..700&display=swap"
+                        />
+                        <link
+                            rel="stylesheet"
+                            href="https://fonts.googleapis.com/css2?family=Mali:ital,wght@0,200..700;1,200..700&display=swap"
+                        />
+                        <link
+                            rel="stylesheet"
+                            href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200..700;1,200..700&display=swap"
+                        />
+                        <link
+                            rel="stylesheet"
+                            href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200..700;1,200..700&display=swap"
+                        />
+                        <link
+                            rel="stylesheet"
+                            href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,200..700;1,200..700&display=swap"
+                        />
+                        <link
+                            rel="stylesheet"
+                            href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,200..700;1,200..700&display=swap"
+                        />
+                        <link
+                            rel="stylesheet"
+                            href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..700;1,200..700&display=swap"
+                        />
+                        <link
+                            rel="stylesheet"
+                            href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,200..700;1,200..700&display=swap"
+                        />
+                        <link
+                            rel="stylesheet"
+                            href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200..700;1,200..700&display=swap"
+                        />
+
                         <link
                             rel='apple-touch-icon'
                             sizes='180x180'

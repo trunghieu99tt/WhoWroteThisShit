@@ -23,8 +23,25 @@ const GOOGLE_FONTS = [
 // Keep track of loaded fonts to prevent reloading
 const loadedFonts = new Set<string>();
 
-// Preload font function
-const preloadGoogleFont = (fontFamily: string) => {
+// Check if font is ready using FontFace API
+const isFontReady = async (fontFamily: string): Promise<boolean> => {
+    if (typeof window === 'undefined' || !('fonts' in document)) return true;
+
+    try {
+        // Wait for font to be ready
+        await document.fonts.ready;
+        // Check if the specific font is loaded
+        const fontFace = Array.from(document.fonts).find(
+            font => font.family.includes(fontFamily)
+        );
+        return fontFace ? fontFace.status === 'loaded' : false;
+    } catch {
+        return true; // Fallback if FontFace API not supported
+    }
+};
+
+// Preload font function with FontFace API support
+const preloadGoogleFont = async (fontFamily: string): Promise<void> => {
     if (loadedFonts.has(fontFamily) || typeof window === 'undefined') return;
 
     const fontUrl = `https://fonts.googleapis.com/css2?family=${fontFamily.replace(/ /g, '+')}:ital,wght@0,200..700;1,200..700&display=swap`;
@@ -36,42 +53,57 @@ const preloadGoogleFont = (fontFamily: string) => {
         return;
     }
 
-    // Create preload link for faster loading
-    const preloadLink = document.createElement('link');
-    preloadLink.rel = 'preload';
-    preloadLink.as = 'style';
-    preloadLink.href = fontUrl;
-    document.head.appendChild(preloadLink);
-
-    // Create the actual stylesheet link
-    const styleLink = document.createElement('link');
-    styleLink.rel = 'stylesheet';
-    styleLink.href = fontUrl;
-    styleLink.onload = () => {
-        loadedFonts.add(fontFamily);
-        // Remove preload link after font is loaded
-        document.head.removeChild(preloadLink);
-    };
-    document.head.appendChild(styleLink);
+    return new Promise((resolve) => {
+        // Create the stylesheet link
+        const styleLink = document.createElement('link');
+        styleLink.rel = 'stylesheet';
+        styleLink.href = fontUrl;
+        styleLink.onload = async () => {
+            // Wait for font to be ready before marking as loaded
+            const ready = await isFontReady(fontFamily);
+            if (ready) {
+                loadedFonts.add(fontFamily);
+            }
+            resolve();
+        };
+        styleLink.onerror = () => {
+            resolve(); // Continue even if font fails to load
+        };
+        document.head.appendChild(styleLink);
+    });
 };
 
 export const CustomFont: React.FC<CustomFontProps> = ({ site, fontFamily }) => {
     // Use provided fontFamily prop, fallback to site config, then to default
     const effectiveFontFamily = fontFamily || site.fontFamily;
+    const [fontLoaded, setFontLoaded] = React.useState(false);
 
-    // Preload Google Fonts immediately when component mounts or font changes
+    // Preload Google Fonts and wait for them to be ready
     React.useEffect(() => {
         if (!effectiveFontFamily) return;
 
         const isGoogleFont = GOOGLE_FONTS.includes(effectiveFontFamily);
-        if (isGoogleFont && !loadedFonts.has(effectiveFontFamily)) {
-            preloadGoogleFont(effectiveFontFamily);
+
+        if (isGoogleFont) {
+            // Check if font is already loaded
+            if (loadedFonts.has(effectiveFontFamily)) {
+                setFontLoaded(true);
+                return;
+            }
+
+            // Load font and wait for it to be ready
+            preloadGoogleFont(effectiveFontFamily).then(() => {
+                setFontLoaded(true);
+            });
+        } else {
+            // For non-Google fonts (system fonts), consider them immediately ready
+            setFontLoaded(true);
         }
     }, [effectiveFontFamily]);
 
-    // Apply font styles with smooth transition
+    // Apply font styles only when font is ready
     React.useEffect(() => {
-        if (!effectiveFontFamily) return;
+        if (!effectiveFontFamily || !fontLoaded) return;
 
         // Create or update the dynamic font style
         const styleId = 'dynamic-font-style';
@@ -89,10 +121,9 @@ export const CustomFont: React.FC<CustomFontProps> = ({ site, fontFamily }) => {
                 font-family: ${cssFontFamily}, -apple-system, BlinkMacSystemFont,
                   'Segoe UI', Helvetica, 'Apple Color Emoji', Arial, sans-serif,
                   'Segoe UI Emoji', 'Segoe UI Symbol' !important;
-                transition: font-family 0.2s ease-in-out;
             }
         `;
-    }, [effectiveFontFamily]);
+    }, [effectiveFontFamily, fontLoaded]);
 
     // Don't render anything in Head since we're handling font loading manually
     return null;
