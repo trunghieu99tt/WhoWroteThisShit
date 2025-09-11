@@ -29,6 +29,18 @@ const FONT_OPTIONS: FontOption[] = [
         preview: 'The quick brown fox jumps over the lazy dog'
     },
     {
+        name: "Space Grotesk",
+        displayName: "Space Grotesk",
+        googleFont: true,
+        preview: 'The quick brown fox jumps over the lazy dog'
+    },
+    {
+        name: "Source Code Pro",
+        displayName: "Source Code Pro",
+        googleFont: true,
+        preview: 'The quick brown fox jumps over the lazy dog'
+    },
+    {
         name: 'Inter',
         displayName: 'Inter',
         googleFont: true,
@@ -61,12 +73,6 @@ const FONT_OPTIONS: FontOption[] = [
     {
         name: 'Open Sans',
         displayName: 'Open Sans',
-        googleFont: true,
-        preview: 'The quick brown fox jumps over the lazy dog'
-    },
-    {
-        name: "Source Code Pro",
-        displayName: "Source Code Pro",
         googleFont: true,
         preview: 'The quick brown fox jumps over the lazy dog'
     },
