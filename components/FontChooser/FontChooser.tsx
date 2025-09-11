@@ -63,7 +63,13 @@ const FONT_OPTIONS: FontOption[] = [
         displayName: 'Open Sans',
         googleFont: true,
         preview: 'The quick brown fox jumps over the lazy dog'
-    }
+    },
+    {
+        name: "Source Code Pro",
+        displayName: "Source Code Pro",
+        googleFont: true,
+        preview: 'The quick brown fox jumps over the lazy dog'
+    },
 ];
 
 const STORAGE_KEY = 'selectedFontFamily';
