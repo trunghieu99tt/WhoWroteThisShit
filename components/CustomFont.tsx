@@ -76,11 +76,27 @@ export const CustomFont: React.FC<CustomFontProps> = ({ site, fontFamily }) => {
         }
 
         const cssFontFamily = `"${effectiveFontFamily}"`;
+
+        // Define font-specific sizes to normalize appearance
+        const getFontSize = (fontFamily: string): string => {
+            switch (fontFamily) {
+                case 'CMU Serif Roman':
+                    return '110%';
+                case 'Source Code Pro': case 'TeX Gyre Bonum Regular':
+                    return '95%';
+                default:
+                    return '100%';
+            }
+        };
+
+        const fontSize = getFontSize(effectiveFontFamily);
+
         styleElement.textContent = `
             .notion.notion-app {
                 font-family: ${cssFontFamily}, -apple-system, BlinkMacSystemFont,
                   'Segoe UI', Helvetica, 'Apple Color Emoji', Arial, sans-serif,
                   'Segoe UI Emoji', 'Segoe UI Symbol' !important;
+                font-size: ${fontSize} !important;
             }
         `;
     }, [effectiveFontFamily, fontLoaded]);
