@@ -42,7 +42,7 @@ body {
 }
 
 .katex {
-    font: normal 1em CMU Serif Roman, KaTeX_Main, Times New Roman, serif !important;
+    font-size: 1em !important;
 }
 
 @font-face {
@@ -65,7 +65,6 @@ body {
 }
 
 .notion-inline-code {
-    font-family: 'CMU Serif Roman' !important;
     font-size: 90%;
 }
 

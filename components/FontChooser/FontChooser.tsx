@@ -41,12 +41,6 @@ const FONT_OPTIONS: FontOption[] = [
         preview: 'The quick brown fox jumps over the lazy dog'
     },
     {
-        name: 'Inter',
-        displayName: 'Inter',
-        googleFont: true,
-        preview: 'The quick brown fox jumps over the lazy dog'
-    },
-    {
         name: 'Mali',
         displayName: 'Mali',
         googleFont: true,
@@ -59,20 +53,8 @@ const FONT_OPTIONS: FontOption[] = [
         preview: 'The quick brown fox jumps over the lazy dog'
     },
     {
-        name: 'Source Sans Pro',
-        displayName: 'Source Sans Pro',
-        googleFont: true,
-        preview: 'The quick brown fox jumps over the lazy dog'
-    },
-    {
         name: 'Roboto',
         displayName: 'Roboto',
-        googleFont: true,
-        preview: 'The quick brown fox jumps over the lazy dog'
-    },
-    {
-        name: 'Open Sans',
-        displayName: 'Open Sans',
         googleFont: true,
         preview: 'The quick brown fox jumps over the lazy dog'
     },

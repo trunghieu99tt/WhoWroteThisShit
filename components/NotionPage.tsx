@@ -28,7 +28,6 @@ import Comment from './Comment';
 import BlogHeader from './BlogHeader';
 import FontChooser from './FontChooser';
 import { useFontChooser } from './FontChooser/useFontChooser';
-import { FontPreloader } from './FontChooser/FontPreloader';
 import Toolbox from './Toolbox';
 
 const Code = dynamic(() =>
@@ -181,7 +180,6 @@ export const NotionPage: React.FC<types.PageProps> = ({
                 socialImage={socialImage}
             />
 
-            <FontPreloader />
             <CustomFont site={site} fontFamily={selectedFont} />
 
             {isLiteMode && <BodyClassName className='notion-lite' />}

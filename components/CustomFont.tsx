@@ -1,4 +1,3 @@
-import Head from 'next/head';
 import * as React from 'react';
 import * as types from '../lib/types';
 
@@ -8,69 +7,29 @@ interface CustomFontProps {
 }
 
 // Define Google Fonts (fonts that need to be loaded from Google Fonts)
+// Only fonts actually available in FontChooser
 const GOOGLE_FONTS = [
-    'Inter',
     'Mali',
     'Poppins',
-    'Source Sans Pro',
     'Roboto',
-    'Open Sans',
-    'Nunito',
-    'Lato',
-    'Montserrat'
+    'Space Grotesk',
+    'Source Code Pro'
 ];
 
 // Keep track of loaded fonts to prevent reloading
 const loadedFonts = new Set<string>();
 
-// Check if font is ready using FontFace API
-const isFontReady = async (fontFamily: string): Promise<boolean> => {
+// Check if fonts are already loaded (they should be preloaded in _document.tsx)
+const checkFontsReady = async (): Promise<boolean> => {
     if (typeof window === 'undefined' || !('fonts' in document)) return true;
 
     try {
-        // Wait for font to be ready
+        // Wait for all fonts to be ready
         await document.fonts.ready;
-        // Check if the specific font is loaded
-        const fontFace = Array.from(document.fonts).find(
-            font => font.family.includes(fontFamily)
-        );
-        return fontFace ? fontFace.status === 'loaded' : false;
+        return true;
     } catch {
         return true; // Fallback if FontFace API not supported
     }
-};
-
-// Preload font function with FontFace API support
-const preloadGoogleFont = async (fontFamily: string): Promise<void> => {
-    if (loadedFonts.has(fontFamily) || typeof window === 'undefined') return;
-
-    const fontUrl = `https://fonts.googleapis.com/css2?family=${fontFamily.replace(/ /g, '+')}:ital,wght@0,200..700;1,200..700&display=swap`;
-
-    // Check if the font link already exists
-    const existingLink = document.querySelector(`link[href="${fontUrl}"]`);
-    if (existingLink) {
-        loadedFonts.add(fontFamily);
-        return;
-    }
-
-    return new Promise((resolve) => {
-        // Create the stylesheet link
-        const styleLink = document.createElement('link');
-        styleLink.rel = 'stylesheet';
-        styleLink.href = fontUrl;
-        styleLink.onload = async () => {
-            // Wait for font to be ready before marking as loaded
-            const ready = await isFontReady(fontFamily);
-            if (ready) {
-                loadedFonts.add(fontFamily);
-            }
-            resolve();
-        };
-        styleLink.onerror = () => {
-            resolve(); // Continue even if font fails to load
-        };
-        document.head.appendChild(styleLink);
-    });
 };
 
 export const CustomFont: React.FC<CustomFontProps> = ({ site, fontFamily }) => {
@@ -78,21 +37,22 @@ export const CustomFont: React.FC<CustomFontProps> = ({ site, fontFamily }) => {
     const effectiveFontFamily = fontFamily || site.fontFamily;
     const [fontLoaded, setFontLoaded] = React.useState(false);
 
-    // Preload Google Fonts and wait for them to be ready
+    // Wait for fonts to be ready (they're preloaded in _document.tsx)
     React.useEffect(() => {
         if (!effectiveFontFamily) return;
 
         const isGoogleFont = GOOGLE_FONTS.includes(effectiveFontFamily);
 
         if (isGoogleFont) {
-            // Check if font is already loaded
+            // Check if font is already loaded from preload
             if (loadedFonts.has(effectiveFontFamily)) {
                 setFontLoaded(true);
                 return;
             }
 
-            // Load font and wait for it to be ready
-            preloadGoogleFont(effectiveFontFamily).then(() => {
+            // Wait for fonts to be ready (they should already be loading)
+            checkFontsReady().then(() => {
+                loadedFonts.add(effectiveFontFamily);
                 setFontLoaded(true);
             });
         } else {

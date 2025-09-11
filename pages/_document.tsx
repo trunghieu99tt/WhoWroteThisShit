@@ -15,88 +15,17 @@ export default class MyDocument extends Document {
                         {/* Preload common Google Fonts to prevent FOIT/FOUT */}
                         <link rel="preconnect" href="https://fonts.googleapis.com" />
                         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+
+                        {/* Combined Google Fonts request - only fonts actually used in FontChooser */}
                         <link
                             rel="preload"
                             as="style"
-                            href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,200..700;1,200..700&display=swap"
-                        />
-                        <link
-                            rel="preload"
-                            as="style"
-                            href="https://fonts.googleapis.com/css2?family=Mali:ital,wght@0,200..700;1,200..700&display=swap"
-                        />
-                        <link
-                            rel="preload"
-                            as="style"
-                            href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200..700;1,200..700&display=swap"
-                        />
-                        <link
-                            rel="preload"
-                            as="style"
-                            href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200..700;1,200..700&display=swap"
-                        />
-                        <link
-                            rel="preload"
-                            as="style"
-                            href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,200..700;1,200..700&display=swap"
-                        />
-                        <link
-                            rel="preload"
-                            as="style"
-                            href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,200..700;1,200..700&display=swap"
-                        />
-                        <link
-                            rel="preload"
-                            as="style"
-                            href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..700;1,200..700&display=swap"
-                        />
-                        <link
-                            rel="preload"
-                            as="style"
-                            href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,200..700;1,200..700&display=swap"
-                        />
-                        <link
-                            rel="preload"
-                            as="style"
-                            href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200..700;1,200..700&display=swap"
+                            href="https://fonts.googleapis.com/css2?family=Mali:ital,wght@0,200..700;1,200..700&family=Poppins:ital,wght@0,200..700;1,200..700&family=Roboto:ital,wght@0,200..700;1,200..700&family=Space+Grotesk:wght@300..700&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap"
                         />
 
-                        {/* Load the stylesheets */}
                         <link
                             rel="stylesheet"
-                            href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,200..700;1,200..700&display=swap"
-                        />
-                        <link
-                            rel="stylesheet"
-                            href="https://fonts.googleapis.com/css2?family=Mali:ital,wght@0,200..700;1,200..700&display=swap"
-                        />
-                        <link
-                            rel="stylesheet"
-                            href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200..700;1,200..700&display=swap"
-                        />
-                        <link
-                            rel="stylesheet"
-                            href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200..700;1,200..700&display=swap"
-                        />
-                        <link
-                            rel="stylesheet"
-                            href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,200..700;1,200..700&display=swap"
-                        />
-                        <link
-                            rel="stylesheet"
-                            href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,200..700;1,200..700&display=swap"
-                        />
-                        <link
-                            rel="stylesheet"
-                            href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..700;1,200..700&display=swap"
-                        />
-                        <link
-                            rel="stylesheet"
-                            href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,200..700;1,200..700&display=swap"
-                        />
-                        <link
-                            rel="stylesheet"
-                            href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200..700;1,200..700&display=swap"
+                            href="https://fonts.googleapis.com/css2?family=Mali:ital,wght@0,200..700;1,200..700&family=Poppins:ital,wght@0,200..700;1,200..700&family=Roboto:ital,wght@0,200..700;1,200..700&family=Space+Grotesk:wght@300..700&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap"
                         />
 
                         <link
