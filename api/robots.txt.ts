@@ -17,6 +17,17 @@ export default async (
   )
   res.setHeader('Content-Type', 'text/plain')
   res.write(`User-agent: *
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
 Sitemap: ${host}/api/sitemap.xml
 `)
   res.end()
