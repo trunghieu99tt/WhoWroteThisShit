@@ -8,6 +8,7 @@ interface Props extends types.PageProps {
     socialImage?: string;
     socialDescription?: string;
     canonicalPageUrl?: string;
+    isBlogPost?: boolean;
 }
 
 const PageHead: React.FC<Props> = ({
@@ -15,7 +16,8 @@ const PageHead: React.FC<Props> = ({
     title,
     socialImage,
     socialDescription,
-    canonicalPageUrl
+    canonicalPageUrl,
+    isBlogPost
 }) => {
     return (
         <Head>
@@ -89,9 +91,10 @@ const PageHead: React.FC<Props> = ({
             )}
 
             <title>{title}</title>
+            {title && <meta property='og:title' content={title} />}
 
             <meta name='theme-color' content='#EB625A' />
-            <meta property='og:type' content='website' />
+            <meta property='og:type' content={isBlogPost ? 'article' : 'website'} />
         </Head>
     );
 };

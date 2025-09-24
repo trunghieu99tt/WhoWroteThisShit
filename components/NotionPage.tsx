@@ -178,6 +178,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
                 socialDescription={socialDescription}
                 canonicalPageUrl={canonicalPageUrl}
                 socialImage={socialImage}
+                isBlogPost={isBlogPost}
             />
 
             <CustomFont site={site} fontFamily={selectedFont} />
