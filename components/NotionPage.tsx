@@ -143,8 +143,8 @@ export const NotionPage: React.FC<types.PageProps> = ({
     const showTableOfContents = !!isBlogPost;
     const minTableOfContentsItems = 3;
 
-    const socialImage = mapNotionImageUrl(
-        (block as PageBlock).format?.page_cover || config.defaultPageCover,
+    const notionImage = mapNotionImageUrl(
+        (block as PageBlock).format?.page_cover || ((block as PageBlock).format as any)?.social_media_image_preview_url || config.defaultPageCover,
         block
     );
 
@@ -177,7 +177,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
                 title={title}
                 socialDescription={socialDescription}
                 canonicalPageUrl={canonicalPageUrl}
-                socialImage={socialImage}
+                // socialImage={socialImage}
                 isBlogPost={isBlogPost}
             />
 
