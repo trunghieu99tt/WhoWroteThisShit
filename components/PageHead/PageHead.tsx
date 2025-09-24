@@ -44,32 +44,23 @@ const PageHead: React.FC<Props> = ({
                 async
             ></script>
 
-            {site?.description && (
-                <>
-                    <meta name='description' content={site.description} />
-                    <meta
-                        property='og:description'
-                        content={site.description}
-                    />
-                </>
-            )}
-
             {config.facebook && (
                 <meta name='facebook:creator' content={`@${config.facebook}`} />
             )}
 
             {site?.name && <meta property='og:site_name' content={site.name} />}
 
-            {socialDescription && (
+            {/* Use socialDescription if available, otherwise fallback to site.description */}
+            {(socialDescription || site?.description) && (
                 <>
-                    <meta name='description' content={socialDescription} />
+                    <meta name='description' content={socialDescription || site.description} />
                     <meta
                         property='og:description'
-                        content={socialDescription}
+                        content={socialDescription || site.description}
                     />
                     <meta
                         name='twitter:description'
-                        content={socialDescription}
+                        content={socialDescription || site.description}
                     />
                 </>
             )}
