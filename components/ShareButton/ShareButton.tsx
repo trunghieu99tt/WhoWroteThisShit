@@ -37,13 +37,6 @@ const ShareButton = ({ url, title }: Props) => {
                     <TwitterIcon size={32} round iconFillColor='#fff' />
                 </TwitterShareButton>
 
-                <LinkedinShareButton
-                    url={url}
-                    title={title}
-                    className={classes.linkedinShareButton}
-                >
-                    <LinkedinIcon size={32} round iconFillColor='#fff' />
-                </LinkedinShareButton>
             </div>
         </section>
     );
