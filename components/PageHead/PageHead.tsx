@@ -68,7 +68,7 @@ const PageHead: React.FC<Props> = ({
                 <>
                     <meta name='twitter:card' content='summary_large_image' />
                     <meta name='twitter:image' content={socialImage} />
-                    <meta property='og:image' content={socialImage} />
+                    {/* <meta property='og:image' content={socialImage} /> */}
                 </>
             ) : (
                 <meta name='twitter:card' content='summary' />
