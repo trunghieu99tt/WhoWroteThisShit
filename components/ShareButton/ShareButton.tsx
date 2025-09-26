@@ -4,9 +4,7 @@ import {
     FacebookIcon,
     TwitterShareButton,
     TwitterIcon,
-    EmailShareButton,
-    EmailIcon
-} from 'react-share';
+} from 'next-share';
 
 import classes from './shareButton.module.css';
 
@@ -16,6 +14,7 @@ type Props = {
 };
 
 const ShareButton = ({ url, title }: Props) => {
+    console.log(url, title);
     return (
         <section className={classes.root}>
             <p className={classes.heading}>Interesting? Let's share it!</p>
@@ -35,15 +34,6 @@ const ShareButton = ({ url, title }: Props) => {
                 >
                     <TwitterIcon size={32} round iconFillColor='#fff' />
                 </TwitterShareButton>
-
-                <EmailShareButton
-                    url={url}
-                    subject={title}
-                    body='body'
-                    className={classes.emailShareButton}
-                >
-                    <EmailIcon size={32} round iconFillColor='#fff' />
-                </EmailShareButton>
             </div>
         </section>
     );

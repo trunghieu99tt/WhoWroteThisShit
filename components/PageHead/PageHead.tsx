@@ -2,6 +2,7 @@ import Head from 'next/head';
 import * as React from 'react';
 import * as types from 'lib/types';
 import * as config from 'lib/config';
+import Script from 'next/script'
 
 interface Props extends types.PageProps {
     title?: string;
@@ -27,22 +28,21 @@ const PageHead: React.FC<Props> = ({
                 name='viewport'
                 content='width=device-width, initial-scale=1, shrink-to-fit=no'
             />
-            <script
+            <Script
                 defer
                 src='https://cloud.umami.is/script.js'
                 data-website-id='3580f550-d3be-4d55-ba73-12593758e87b'
-            ></script>
-            <script async src='https://cdn.splitbee.io/sb.js'></script>
+            ></Script>
             <link
                 href='https://assets.calendly.com/assets/external/widget.css'
                 rel='stylesheet'
             />
-            <script
+            <Script
                 defer
                 type='text/javascript'
                 src='https://assets.calendly.com/assets/external/widget.js'
                 async
-            ></script>
+            ></Script>
 
             {config.facebook && (
                 <meta name='facebook:creator' content={`@${config.facebook}`} />
