@@ -16,7 +16,6 @@ type Props = {
 };
 
 const ShareButton = ({ url, title }: Props) => {
-    console.log(url, title);
     return (
         <section className={classes.root}>
             <p className={classes.heading}>Interesting? Let's share it!</p>

@@ -28,22 +28,6 @@ const PageHead: React.FC<Props> = ({
                 name='viewport'
                 content='width=device-width, initial-scale=1, shrink-to-fit=no'
             />
-            <Script
-                defer
-                src='https://cloud.umami.is/script.js'
-                data-website-id='3580f550-d3be-4d55-ba73-12593758e87b'
-            ></Script>
-            <link
-                href='https://assets.calendly.com/assets/external/widget.css'
-                rel='stylesheet'
-            />
-            <Script
-                defer
-                type='text/javascript'
-                src='https://assets.calendly.com/assets/external/widget.js'
-                async
-            ></Script>
-
             {config.facebook && (
                 <meta name='facebook:creator' content={`@${config.facebook}`} />
             )}
@@ -84,8 +68,21 @@ const PageHead: React.FC<Props> = ({
             <title>{title}</title>
             {title && <meta property='og:title' content={title} />}
 
-            <meta name='theme-color' content='#EB625A' />
             <meta property='og:type' content={isBlogPost ? 'article' : 'website'} />
+
+            <Script
+                defer
+                src='https://cloud.umami.is/script.js'
+                data-website-id='3580f550-d3be-4d55-ba73-12593758e87b'
+            ></Script>
+           
+            <Script
+                defer
+                type='text/javascript'
+                src='https://assets.calendly.com/assets/external/widget.js'
+                async
+            ></Script>
+
         </Head>
     );
 };

@@ -67,7 +67,10 @@ const Code = dynamic(() =>
             import('prismjs/components/prism-yaml.js')
         ]);
         return m.Code;
-    })
+    }),
+    {
+        ssr: false
+    }
 );
 const Collection = dynamic(() =>
     import('react-notion-x/build/third-party/collection').then(

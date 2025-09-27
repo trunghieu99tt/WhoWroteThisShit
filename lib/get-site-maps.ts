@@ -1,5 +1,4 @@
 import pMap from 'p-map';
-
 import { getAllPages } from './get-all-pages';
 import { getSites } from './get-sites';
 import * as types from './types';

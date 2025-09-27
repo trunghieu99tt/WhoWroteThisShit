@@ -50,7 +50,6 @@ export async function getAllPagesImpl(
         {}
     );
 
-    console.log(`canonicalPageMap`, canonicalPageMap);
 
     return {
         pageMap,

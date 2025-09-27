@@ -53,6 +53,10 @@ export default class MyDocument extends Document {
                         />
 
                         <link rel='manifest' href='/manifest.json' />
+                        <link
+                            href='https://assets.calendly.com/assets/external/widget.css'
+                            rel='stylesheet'
+                        />
                     </Head>
 
                     <body>
