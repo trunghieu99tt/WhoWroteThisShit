@@ -19,13 +19,25 @@ export default async (
   res.write(`User-agent: *
 Allow: /
 
+# Explicitly allow Facebook's external hit crawler
+User-agent: facebookexternalhit/1.1
+Allow: /
+
 User-agent: facebookexternalhit
 Allow: /
 
+# Allow other social media crawlers
 User-agent: Twitterbot
 Allow: /
 
 User-agent: LinkedInBot
+Allow: /
+
+# Allow Facebook's other crawlers
+User-agent: FacebookBot
+Allow: /
+
+User-agent: facebookcatalog
 Allow: /
 
 Sitemap: ${host}/api/sitemap.xml

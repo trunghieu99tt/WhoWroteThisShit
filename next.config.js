@@ -10,5 +10,13 @@ module.exports = withBundleAnalyzer({
     },
     future: {
         webpack5: true
+    },
+    async rewrites() {
+        return [
+            {
+                source: '/robots.txt',
+                destination: '/api/robots.txt'
+            }
+        ];
     }
 });
