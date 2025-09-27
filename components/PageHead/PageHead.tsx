@@ -52,7 +52,7 @@ const PageHead: React.FC<Props> = ({
                 <>
                     <meta name='twitter:card' content='summary_large_image' />
                     <meta name='twitter:image' content={socialImage} />
-                    {/* <meta property='og:image' content={socialImage} /> */}
+                    <meta property='og:image' content="https://www.notion.so/image/attachment%3Ab77d88f6-c584-47e5-8053-04a54d98b03d%3AScreenshot_2025-02-23_at_23.44.49.png?table=block&id=183afe64-43cc-8018-b3e8-f9d98e85fe3b&cache=v2" />
                 </>
             ) : (
                 <meta name='twitter:card' content='summary' />
@@ -75,7 +75,7 @@ const PageHead: React.FC<Props> = ({
                 src='https://cloud.umami.is/script.js'
                 data-website-id='3580f550-d3be-4d55-ba73-12593758e87b'
             ></Script>
-           
+
             <Script
                 defer
                 type='text/javascript'
